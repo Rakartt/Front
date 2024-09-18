@@ -12,7 +12,7 @@ function registerData() {
     }
 
     $.ajax({
-        url: "http://ec2-54-235-53-221.compute-1.amazonaws.com:5000/usuarios",
+        url: "http://ec2-34-230-36-213.compute-1.amazonaws.com:5000/usuarios",
         type: "POST",
         contentType: "application/json",
         dataType: "json",
@@ -35,7 +35,7 @@ function registerData() {
 
 function showUsers() {
     $.ajax({
-        url: "http://ec2-54-235-53-221.compute-1.amazonaws.com:5000/registro",
+        url: "http://ec2-34-230-36-213.compute-1.amazonaws.com:5000/registro",
         type: "GET",
         contentType: "application/json",
         dataType: "json",
@@ -70,7 +70,7 @@ function deleteUser(userId) {
     }
     
     $.ajax({
-        url: `http://ec2-54-235-53-221.compute-1.amazonaws.com:5000/usuarios/${userId}`,
+        url: `http://ec2-34-230-36-213.compute-1.amazonaws.com:5000/usuarios/${userId}`,
         type: "DELETE",
         success: function(response) {
             console.log(response);
