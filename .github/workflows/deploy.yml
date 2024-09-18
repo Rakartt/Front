@@ -18,18 +18,12 @@ jobs:
           PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
           HOSTNAME: ${{ secrets.EC2_HOST }}
           USER_NAME: ${{ secrets.EC2_USER }}
-      
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          echo "$PRIVATE_KEY" | tr -d '\r' > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
-              # Now we have got the access of EC2 and we will start the deploy.
               cd /home/ubuntu/back &&
               git checkout master &&
               git fetch --all &&
               git reset --hard origin/master &&
-              git pull origin master &&
-              sudo npm i &&
-              sudo npm run build &&
-              sudo pm2 stop ./dist/index.js &&
-              sudo pm2 start ./dist/index.js
+              git pull origin master
           '
