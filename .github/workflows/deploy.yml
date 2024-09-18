@@ -24,10 +24,10 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME} '
               # Now we have got the access of EC2 and we will start the deploy.
               cd /home/ubuntu/back &&
-              git checkout dev &&
+              git checkout master &&
               git fetch --all &&
-              git reset --hard origin/dev &&
-              git pull origin dev &&
+              git reset --hard origin/master &&
+              git pull origin master &&
               sudo npm i &&
               sudo npm run build &&
               sudo pm2 stop ./dist/index.js &&
